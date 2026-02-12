@@ -15,7 +15,7 @@ class Command(BaseCommand):
             defaults={
                 'site_name': 'Builds Your Mind',
                 'tagline': 'Smart, Eco-Friendly Learning Kits & Classroom Solutions',
-                'email': 'info@buildsyourmind.in',
+                'email': 'buildsyourmind@gmail.com',
                 'phone': '+91 91097 11321',
                 'whatsapp': '+91 91097 11321',
                 'address': 'Harmono Pvt. Ltd., Indore, Madhya Pradesh, India',

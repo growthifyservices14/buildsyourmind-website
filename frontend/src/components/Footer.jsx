@@ -86,8 +86,8 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-blue-200/80 mb-6 max-w-sm">
-              Smart, Eco-Friendly Learning Kits & Classroom Solutions Made in
-              India | For Schools, Students & Future-Ready Education
+              Sustainable learning kits for Schools & Homes, plus trusted home
+              tuition services. Made in India.
             </p>
             <div className="flex flex-wrap gap-3">
               {[
@@ -169,9 +169,9 @@ const Footer = () => {
                 <FiMail className="text-brand-orange mt-1 flex-shrink-0" />
                 <a
                   href="mailto:buildsyourmind@gmail.com"
-                  className="text-blue-200/80 hover:text-brand-orange transition-colors break-all"
+                  className="text-blue-200/80 hover:text-brand-orange transition-colors break-words"
                 >
-                  buildsyour@gmail.com
+                  buildsyourmind@gmail.com{" "}
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -210,8 +210,8 @@ const Footer = () => {
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-blue-200/60 text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Growthify Services. All rights
-              reserved❤️.
+              © {new Date().getFullYear()} Buildsyourmind Pvt. Ltd. All rights
+              reserved.
               <span className="mx-2">|</span>
               Designed and developed by Growthify Services❤️.
             </p>

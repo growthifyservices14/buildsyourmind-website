@@ -60,9 +60,10 @@ const Workshops = () => {
     const fetchWorkshops = async () => {
       try {
         const response = await getWorkshops();
+        console.log("API Response:", response.data); // Debugging ke liye
         const workshopsData = Array.isArray(response.data)
           ? response.data
-          : response.data?.data || [];
+          : response.data?.results || [];
         setWorkshops(workshopsData);
       } catch (error) {
         console.error("Error fetching workshops:", error);
@@ -85,6 +86,9 @@ const Workshops = () => {
       setBookingLoading(false); // Ye bhi change karo
     }
   };
+  console.log("STATE:", workshops);
+  console.log("LENGTH:", workshops?.length);
+
 
   return (
     <>
@@ -159,69 +163,52 @@ const Workshops = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {workshops.map((w, i) => {
-              const IconComponent = iconMap[w.workshop_type] || FaCogs;
-              return (
-                <motion.div
-                  key={w.id}
-                  variants={fadeInUp}
-                  className="card p-6 group hover:-translate-y-2 transition-all duration-300"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors">
-                    <IconComponent className="text-2xl text-brand-blue group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="font-display font-semibold text-lg text-brand-blue mb-2">
-                    {w.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="text-xs bg-blue-100/30 text-brand-blue px-2 py-1 rounded">
-                      {w.target_audience.replace("_", " ")}
-                    </span>
-                    <span className="text-xs bg-orange-100/30 text-brand-orange px-2 py-1 rounded">
-                      {w.duration}
-                    </span>
-                    {w.max_students && (
-                      <span className="text-xs bg-green-100/30 text-green-700 px-2 py-1 rounded">
-                        Max {w.max_students} students
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-gray-600 text-sm mb-4">{w.description}</p>
-                  <ul className="space-y-2">
-                    {w.features &&
-                      w.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-center gap-2 text-sm text-gray-600"
-                        >
-                          <FiCheck className="text-brand-orange flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                  </ul>
-                  {w.price_per_student && (
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <p className="text-sm text-gray-600">Starting from</p>
-                      <p className="text-xl font-bold text-brand-blue">
-                        ₹{w.price_per_student}{" "}
-                        <span className="text-sm font-normal text-gray-500">
-                          per student
-                        </span>
-                      </p>
-                    </div>
-                  )}
-                </motion.div>
-              );
-            })}
-          </motion.div>
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {workshops.map((w) => {
+    const IconComponent = iconMap[w.workshop_type] || FaCogs;
+
+    return (
+      <div
+        key={w.id}
+        className="card p-6 group hover:-translate-y-2 transition-all duration-300"
+      >
+        <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-4">
+          <IconComponent className="text-2xl text-brand-blue" />
         </div>
+
+        <h3 className="font-semibold text-lg text-brand-blue mb-2">
+          {w.title}
+        </h3>
+
+        <div className="flex flex-wrap gap-2 mb-3">
+          {w.target_audience && (
+            <span className="text-xs bg-blue-100/30 text-brand-blue px-2 py-1 rounded">
+              {w.target_audience.replace("_", " ")}
+            </span>
+          )}
+
+          {w.duration && (
+            <span className="text-xs bg-orange-100/30 text-brand-orange px-2 py-1 rounded">
+              {w.duration}
+            </span>
+          )}
+
+          {w.max_students && (
+            <span className="text-xs bg-green-100/30 text-green-700 px-2 py-1 rounded">
+              Max {w.max_students} students
+            </span>
+          )}
+        </div>
+
+        <p className="text-gray-600 text-sm mb-4">
+          {w.description}
+        </p>
+      </div>
+    );
+  })}
+          </div>
+        </div>
+
       </section>
 
       {/* Booking Form */}

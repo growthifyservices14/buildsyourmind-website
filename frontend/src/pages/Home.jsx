@@ -213,16 +213,15 @@ const Home = () => {
                 variants={fadeInUp}
                 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-6"
               >
-                Eco-Friendly Educational Kits ,{" "}
-                <span className="text-brand-orange">Home Tuition</span> Services
+                Smart, Eco-Friendly Learning Kits and{" "}
+                <span className="text-brand-orange">Classroom </span> Solutions
               </motion.h1>
 
               <motion.p
                 variants={fadeInUp}
                 className="text-lg md:text-xl text-blue-100/90 mb-8 max-w-xl"
               >
-                Builds Your Mind by Harmono Pvt. Ltd. — sustainable learning
-                kits for Schools & Homes, plus trusted home tuition services.
+                Made in India | For Schools, Students & Future-Ready Education
               </motion.p>
 
               <motion.div
@@ -248,9 +247,9 @@ const Home = () => {
                 className="mt-12 flex items-center gap-6 sm:gap-8 flex-wrap"
               >
                 {[
-                  { num: "500+", label: "Schools" },
+                  { num: "100+", label: "Schools" },
                   { num: "50+", label: "Products" },
-                  { num: "100+", label: "Teachers" },
+                  { num: "50+", label: "Teachers" },
                   { num: "100%", label: "Eco-Friendly" },
                 ].map((s, i) => (
                   <div key={i} className="text-center">
